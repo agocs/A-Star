@@ -166,6 +166,11 @@ def astar(matrix):
                 else:
                     open_list[neighbor] = new_map[y][x].F
                 
+def setup_failed(matrix):
+    for y in xrange(len(matrix)-1):
+        for x in xrange(len(matrix[y])-1):
+            if matrix[y][x].parent != None:
+                matrix[y][x].walked_on = True
 
 if __name__ == "__main__":
     import sys
@@ -187,5 +192,6 @@ if __name__ == "__main__":
             time.sleep(.3)
         print ""
     else:
+        setup_failed(new_map)
         print print_map(new_map)
         print "No dice, better luck next time."
